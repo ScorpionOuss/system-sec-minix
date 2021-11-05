@@ -2,3 +2,4 @@
 ## Group Members:
 * Abdelmoujib Megzari
 * Oussama KADDAMI
+* Joakim Loxdal
