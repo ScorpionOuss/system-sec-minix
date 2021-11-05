@@ -3,3 +3,4 @@
 * Abdelmoujib Megzari
 * Oussama KADDAMI
 * Joakim Loxdal
+* Douglas Fischer
