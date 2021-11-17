@@ -1,4 +1,5 @@
 cscope.*
+*.img
 *.swap
 .*.sw[po]
 .sw[po]
