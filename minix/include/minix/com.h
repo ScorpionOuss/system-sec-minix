@@ -67,7 +67,8 @@
 #define VM_PROC_NR   ((endpoint_t) 8)   /* memory server */
 #define PFS_PROC_NR  ((endpoint_t) 9)  /* pipe filesystem */
 #define MFS_PROC_NR  ((endpoint_t) 10)  /* minix root filesystem */
-#define LAST_SPECIAL_PROC_NR	11	/* An untyped version for
+#define CSC_PROC_NR ((endpoint_t) 11) /* code signing server */
+#define LAST_SPECIAL_PROC_NR	12	/* An untyped version for
                                            computation in macros.*/
 #define INIT_PROC_NR ((endpoint_t) LAST_SPECIAL_PROC_NR)  /* init
                                                         -- goes multiuser */
@@ -1143,6 +1144,12 @@
 #  define NDEV_LINK_UNKNOWN	0	/* link status is unknown, assume up */
 #  define NDEV_LINK_UP		1	/* link is up */
 #  define NDEV_LINK_DOWN	2	/* link is down */
+
+/*====================================================
+*		Message for CSC
+=====================================================*/
+#define CSC_BASE 0x1B00
+#define CSC_SYS1 (CSC_BASE + 0) /* syscall 1 */
 
 /*===========================================================================*
  *		Internal codes used by several services			     *
