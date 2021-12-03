@@ -15,6 +15,8 @@
 ./usr/games/arithmetic                                  minix-games
 ./usr/games/banner                                      minix-games
 ./usr/games/bcd                                         minix-games
+./usr/games/demo01                                      minix-games
+./usr/games/test_csc                                    minix-games
 ./usr/games/caesar                                      minix-games
 ./usr/games/colorbars                                   minix-games
 ./usr/games/factor                                      minix-games

@@ -1149,7 +1149,7 @@
 *		Message for CSC
 =====================================================*/
 #define CSC_BASE 0x1B00
-#define CSC_SYS1 (CSC_BASE + 0) /* syscall 1 */
+#define CSC_CODECHECK (CSC_BASE + 0) /* syscall 1 */
 
 /*===========================================================================*
  *		Internal codes used by several services			     *

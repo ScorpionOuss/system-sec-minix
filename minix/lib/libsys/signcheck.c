@@ -14,10 +14,10 @@ static int do_invoke_myserver(message *m, int type)
 	return r;
 }
 
-int myserver_sys1(void)
+int csc_codecheck(void)
 {
 	message m;
 
 	memset(&m, 0, sizeof(m));
-	return do_invoke_myserver(&m, CSC_SYS1);
+	return do_invoke_myserver(&m, CSC_CODECHECK);
 }

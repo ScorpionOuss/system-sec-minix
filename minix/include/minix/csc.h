@@ -9,6 +9,6 @@
 /* myserver.c */
 
 /* U32 */
-int myserver_sys1(void);
+int csc_codecheck(void);
 
 #endif /* _MINIX_MYSERVER_H */

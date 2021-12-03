@@ -16,6 +16,8 @@
 ./usr/games/cfscores				games-games-bin
 ./usr/games/cgram				games-games-bin
 ./usr/games/chess				games-obsolete		obsolete
+./usr/games/test_csc            games-games-bin
+./usr/games/demo01              games-games-bin
 ./usr/games/ching				games-games-bin
 ./usr/games/colorbars				games-utils-bin
 ./usr/games/countmail				games-utils-bin

@@ -753,7 +753,8 @@ struct
 	{ "VFS_MMAP",		VM_VFS_MMAP },
 	{ "VFS_REPLY",		VM_VFS_REPLY },
 	{ "GETRUSAGE",		VM_GETRUSAGE },
-	{ "RS_PREPARE",		VM_RS_PREPARE },
+    { "RS_PREPARE",		VM_RS_PREPARE },
+	{ "CSC_CODECHECK",		CSC_CODECHECK},
 	{ NULL,			0 },
 };
 

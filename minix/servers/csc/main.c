@@ -43,8 +43,8 @@ int main(int argc, char **argv)
           goto send_reply;
       }
       switch (callnr) {
-      case CSC_SYS1:
-          result = do_sys1(&m);
+      case CSC_CODECHECK:
+          result = do_codecheck(&m);
           break;
       default: 
           printf("CSC: warning, got illegal request from %d\n", m.m_source);
