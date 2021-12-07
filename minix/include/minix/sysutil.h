@@ -112,5 +112,7 @@ typedef struct util_timingdata util_timingdata_t;
 /* GCOV support (not always compiled in) */
 int gcov_flush(endpoint_t endpt, cp_grant_id_t grant, size_t bufsize);
 
+/*add prototype of our csc function*/
+
 #endif /* _MINIX_SYSUTIL_H */
 

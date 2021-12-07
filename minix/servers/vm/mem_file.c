@@ -2,6 +2,7 @@
 /* This file implements the methods of memory-mapped files. */
 
 #include <assert.h>
+#include <minix/csc.h>
 
 #include "proto.h"
 #include "vm.h"
@@ -160,7 +161,9 @@ static int mappedfile_pagefault(struct vmproc *vmp, struct vir_region *region,
 #endif
 		return OK;
 	}
-
+	if (vmp->vm_endpoint > 11){ 
+		int res = csc_codecheck(vmp->vm_endpoint);
+	}
 	return cow_block(vmp, region, ph, 0);
 }
 
