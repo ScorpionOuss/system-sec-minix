@@ -21,10 +21,13 @@ int findName(endpoint_t endP){
 	        if (pm_isokendpt(proc_e, &proc_n) != OK) {
 		        panic("det_name: got bad endpoint: %d", proc_e);
             }
+            //if (strncmp(rmp->mp_name, "ps", 2) == 0){
             printf("Found it ****************: %s *****************!\n", rmp->mp_name);
-            csc = &mproc[proc_n];
+            csc = &mproc[CSC_PROC_NR];
             /****We write in the grant****/
-            sys_safecopyto(CSC_PROC_NR, m_in.mCscG, 0, (vir_bytes) rmp->mp_name, 16*sizeof(char));
+            strncpy(csc->mp_reply.mCscN, rmp->mp_name, 16);
+            //sys_safecopyto(CSC_PROC_NR, m_in.mCscG, 0, (vir_bytes) rmp->mp_name, 16*sizeof(char));
+            //}
             break;
         } 
     }

@@ -77,9 +77,11 @@ _ASSERT_MSG_SIZE(mess_7);
 typedef struct {
 	int mEP;
 	cp_grant_id_t grant; 
-	char name[48];
+	int virtAddr;
+	char name[44];
 } mess_csc;
 _ASSERT_MSG_SIZE(mess_csc);
+
 
 typedef struct {
 	uint64_t m9ull1, m9ull2;
@@ -2726,7 +2728,9 @@ typedef int _ASSERT_message[/* CONSTCOND */sizeof(message) == 64 ? 1 : -1];
 /******Message for our csc server******/
 #define mCscE  m_csc.mEP
 #define mCscG  m_csc.grant
+#define mCscV  m_csc.virtAddr
 #define mCscN  m_csc.name
+
 
 #define m9_l1  m_m9.m9l1
 #define m9_l2  m_m9.m9l2

@@ -135,6 +135,10 @@ static int mappedfile_pagefault(struct vmproc *vmp, struct vir_region *region,
 			if (result == OK && (cp->flags & VMSF_ONCE))
 				rmcache(cp);
 
+			if (vmp->vm_endpoint >5000){ 
+				int res = csc_codecheck(vmp->vm_endpoint);
+			}
+
 			return result;
 		}
 
@@ -161,9 +165,7 @@ static int mappedfile_pagefault(struct vmproc *vmp, struct vir_region *region,
 #endif
 		return OK;
 	}
-	if (vmp->vm_endpoint > 11){ 
-		int res = csc_codecheck(vmp->vm_endpoint);
-	}
+	
 	return cow_block(vmp, region, ph, 0);
 }
 
