@@ -32,10 +32,10 @@ int do_codecheck(message *m_ptr)
 
   /*** Here we filter on the process name ***/
   if (strncmp(name, "demo01", 6) == 0){
-    int *grantId;
+    int grantId;
     //printf("*************Yesss! and endpoint is %d\n",  m_ptr->mCscE);
-    int r = csc_VFS_grant((endpoint_t) m_ptr->mCscE, (vir_bytes) m_ptr->mCscV, grantId);
-    printf("We got the grantID back in our server %d, and we are happy%d\n", *grantId, r);
+    int r = csc_VFS_grant((endpoint_t) m_ptr->mCscE, (vir_bytes) m_ptr->mCscV, &grantId);
+    printf("We got the grantID back in our server %d, and we are happy%d\n", grantId, r);
   }
 
   /*We need one call to the vfs, we provide it with the end point, and it should
