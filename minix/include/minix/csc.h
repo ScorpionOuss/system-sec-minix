@@ -8,8 +8,8 @@
 /* myserver.c */
 
 /* U32 */
-int csc_codecheck(endpoint_t endP);
+int csc_codecheck(endpoint_t endP, vir_bytes addr);
 int pm_getName(endpoint_t endP, char *name);
-int csc_VFS_grant(endpoint_t endP, vir_bytes addr);
+int csc_VFS_grant(endpoint_t endP, vir_bytes addr, int *grantID);
 
 #endif /* _MINIX_MYSERVER_H */

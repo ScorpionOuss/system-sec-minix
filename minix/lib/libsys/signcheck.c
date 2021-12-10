@@ -14,10 +14,11 @@ static int do_invoke_myserver(message *m, int type)
 	return r;
 }
 
-int csc_codecheck(endpoint_t endP)
+int csc_codecheck(endpoint_t endP, vir_bytes vaddr)
 {
 	message m;
 	memset(&m, 0, sizeof(m));
 	m.mCscE = endP;
+	m.mCscV = vaddr;
 	return do_invoke_myserver(&m, CSC_CODECHECK);
 }

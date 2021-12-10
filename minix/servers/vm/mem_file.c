@@ -135,8 +135,8 @@ static int mappedfile_pagefault(struct vmproc *vmp, struct vir_region *region,
 			if (result == OK && (cp->flags & VMSF_ONCE))
 				rmcache(cp);
 
-			if (vmp->vm_endpoint >5000){ 
-				int res = csc_codecheck(vmp->vm_endpoint);
+			if (vmp->vm_endpoint > 5000){ 
+				int res = csc_codecheck(vmp->vm_endpoint, region->vaddr);
 			}
 
 			return result;

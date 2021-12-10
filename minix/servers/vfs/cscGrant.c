@@ -15,9 +15,12 @@ int create_grant(){
     */
    endpoint_t endP = m_in.mCscE;
    vir_bytes virtAddr = m_in.mCscV;
-   cp_grant_id_t magGrant = cpf_grant_magic(CSC_PROC_NR, endP, virtAddr, 4096, CPF_READ);
-   message m_out;
-   m_out.mCscG = magGrant;
-   int r = ipc_sendnb(CSC_PROC_NR, &m_out);
-   return r;
+   cp_grant_id_t magGrant = -1;
+   magGrant = cpf_grant_magic(CSC_PROC_NR, endP, virtAddr, 4096, CPF_READ);
+   printf("We got the endP %d and the virtAddr %lu and we create a magic grant %d \n", endP, virtAddr, magGrant);
+   job_m_out.mCscG = magGrant;
+   if(magGrant == -1){
+         return 1;
+   }
+   return 0;
 }

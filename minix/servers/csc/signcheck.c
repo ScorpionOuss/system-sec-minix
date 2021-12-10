@@ -26,13 +26,18 @@ int do_codecheck(message *m_ptr)
   /******Here we grant write permissions******/ 
   // cp_grant_id_t grantId = cpf_grant_direct(PM_PROC_NR,
   // (vir_bytes) name, 16*sizeof(char), CPF_WRITE);
+  
   /*****We call pm_getName()*****/
   int res = pm_getName((endpoint_t) m_ptr->mCscE, name);
-  //printf("We got the name : %s \n", name);
-  
-  if (strncmp(name, "ps", 2)== 0){
-    printf("*************Yesss! and endpoint is %d\n",  m_ptr->mCscE);
+
+  /*** Here we filter on the process name ***/
+  if (strncmp(name, "demo01", 6) == 0){
+    int *grantId;
+    //printf("*************Yesss! and endpoint is %d\n",  m_ptr->mCscE);
+    int r = csc_VFS_grant((endpoint_t) m_ptr->mCscE, (vir_bytes) m_ptr->mCscV, grantId);
+    printf("We got the grantID back in our server %d, and we are happy%d\n", *grantId, r);
   }
+
   /*We need one call to the vfs, we provide it with the end point, and it should
   create a magic grant for us, a read magic grant and*/
 
@@ -45,4 +50,4 @@ int do_codecheck(message *m_ptr)
    *  perform the signature
    */
   return(OK);
-} 
+}
