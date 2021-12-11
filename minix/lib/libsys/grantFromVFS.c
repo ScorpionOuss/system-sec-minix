@@ -17,6 +17,7 @@ static int do_invoke_vfsGrantCall(message *m, int type, int *grantID)
 
 int csc_VFS_grant(endpoint_t endP, vir_bytes addr, int *grantID)
 {
+	/*****We call the VFS to create magic grant*****/
 	message m;
 	memset(&m, 0, sizeof(m));
 	m.mCscE = endP;

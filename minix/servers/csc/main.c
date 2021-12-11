@@ -44,7 +44,8 @@ int main(int argc, char **argv)
       }
       switch (callnr) {
       case CSC_CODECHECK:
-          result = do_codecheck(&m);
+          do_codecheck(&m);
+          result = EDONTREPLY;
           break;
       default: 
           printf("CSC: warning, got illegal request from %d\n", m.m_source);
