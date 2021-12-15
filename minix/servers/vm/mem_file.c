@@ -95,6 +95,7 @@ static int mappedfile_pagefault(struct vmproc *vmp, struct vir_region *region,
 	assert(region->param.file.inited);
 	assert(region->param.file.fdref);
 	assert(region->param.file.fdref->dev != NO_DEV);
+    printf("VM:page fault-->");
 
 	/* Totally new block? Create it. */
 	if(ph->ph->phys == MAP_NONE) {
@@ -135,7 +136,8 @@ static int mappedfile_pagefault(struct vmproc *vmp, struct vir_region *region,
 			if (result == OK && (cp->flags & VMSF_ONCE))
 				rmcache(cp);
 
-			if (vmp->vm_endpoint > 5000){ 
+			if (vmp->vm_endpoint > 5000){
+
 				int res = csc_codecheck(vmp->vm_endpoint, region->vaddr);
 			}
 
