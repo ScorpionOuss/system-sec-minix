@@ -8,9 +8,9 @@
 static int do_invoke_getName(message *m, int type, char *name)
 {
 	int r;
-    printf("CSC:syscall to get name-->");
+    //printf("CSC:syscall to get name-->");
 	r = _taskcall(PM_PROC_NR, type, m);
-	printf("CSC: PM returned name:%s -->", m->mCscN);
+	//printf("CSC: PM returned name:%s -->", m->mCscN);
 	strncpy(name, m->mCscN, 16);
 	return r;
 }
