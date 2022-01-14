@@ -1222,6 +1222,7 @@
 ./usr/include/minix/minlib.h                            minix-comp
 ./usr/include/minix/mmio.h                              minix-comp
 ./usr/include/minix/csc.h                              minix-comp
+./usr/include/minix/bms.h                              minix-comp
 ./usr/include/minix/mthread.h                           minix-comp
 ./usr/include/minix/netdriver.h                         minix-comp
 ./usr/include/minix/netsock.h                           minix-comp      obsolete

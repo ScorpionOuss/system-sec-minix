@@ -16,6 +16,7 @@
 ./usr/man/man1/[.1                                      minix-man
 ./usr/man/man1/addr2line.1                              minix-man       binutils
 ./usr/man/man1/alias.1                                  minix-man
+./usr/man/man1/benchmark.1                                minix-man
 ./usr/man/man1/apropos.1                                minix-man
 ./usr/man/man1/ar.1                                     minix-man       binutils
 ./usr/man/man1/arpaname.1                               minix-man
