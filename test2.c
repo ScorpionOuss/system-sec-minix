@@ -49,6 +49,7 @@ int main(int argc, char** argv){
     fread(&progHeader, 1, sizeof(progHeader), elfFile);
     int64_t offset = progHeader.p_offset;
     int64_t size = progHeader.p_filesz;
+    printf("vadrr:%d",progHeader.p_vaddr);
 
 
 
@@ -70,7 +71,7 @@ int main(int argc, char** argv){
             sign^= *((int32_t *) (page+i));
         }
         signatures[c]=sign;
-        printf("%ld : %d\n",offset + c*4096,sign);
+        printf("%ld : %d\n",progHeader.p_vaddr+offset + c*4096,sign);
     }
     // /****We generate signatures for the different blocks****/
     // int numBlocks = ((int) size/4096) + 1;

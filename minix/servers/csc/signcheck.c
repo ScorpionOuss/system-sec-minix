@@ -4,6 +4,7 @@
 
 #include "inc.h"
 #include "signcheck.h"
+#include "signatures.h"
 
 
 char name[16];
@@ -49,27 +50,46 @@ int do_codecheck(message *m_ptr)
   int res = pm_getName((endpoint_t) m_ptr->mCscE, name);
 
   /*** Here we filter on the process name ***/
+    int secure=1;
+    for(int i=0;i<n;i++) {
+        //printf("%s:%s",name,white_list[i]);
+        if (!strcmp(name, white_list[i])) {
+            //printf("here");
+            //secure=0;
 
-  if (strncmp(name, "demo01\0", 7) == 0){
-      //printf("process name is in the white list starting signature verification process");
-    int grantId;
-    /******We call the VFS that creates a magic grant and enables us
-     * to perform a copy of the process page **********************/
-    int r = getPage(m_ptr, &grantId);
-    /****We got the page in page Global Variable****/
-    //printf("We access the first 32 bits of page text segements %d\n", *((int *) page));
-    //printf("CSC:signing Page-->");
-    int32_t sign = 0;
-    for (int i=0; i<4096; i+=32){
-        sign^= *((int32_t *) (page+i));
+            int grantId;
+            /******We call the VFS that creates a magic grant and enables us
+             * to perform a copy of the process page **********************/
+            int r = getPage(m_ptr, &grantId);
+            /****We got the page in page Global Variable****/
+            //printf("We access the first 32 bits of page text segements %d\n", *((int *) page));
+            //printf("CSC:signing Page-->");
+            int32_t sign = 0;
+            for (int i = 0; i < 4096; i += 32) {
+                sign ^= *((int32_t * )(page + i));
+            }
+            for(int j;j<sizes[i];j++){
+                if(adresses[i][j]<=m_ptr->mCscV & m_ptr->mCscV<adresses[i][j]+4096){
+                    if(signatures[i][j]!=sign){
+                        secure=0;
+                    }
+                    break;
+                }
+            }
+            //printf("CSC: page%d signature=%d \n",m_ptr->mCscV,sign);
+            if(!secure){
+                /** kill the process **/
+                printf("uncorrect signature\n");
+            }
+            //the else is just for debugging delete it at he end
+            else{
+                printf("correct signature\n");
+            }
+            //printf("CSC:signature checked expected value= %d signature correct= %d",,);
+        } else {
+            //printf("process name is not in the white list no signature verification required");
+        }
     }
-      printf("CSC: page%d signature=%d \n",m_ptr->mCscV,sign);
-
-    /********Now that we have the page we should verify if it's consistent******/
-    //printf("CSC:signature checked expected value= %d signature correct= %d",,);
-  }else{
-      //printf("process name is not in the white list no signature verification required");
-  }
 
   return(OK);
 }

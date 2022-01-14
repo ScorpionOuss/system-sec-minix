@@ -10,7 +10,7 @@
 .if ${MKSHARE} != "no" || \
 	make(clean) || make(cleandir) || make(distclean) || make(obj)
 SUBDIR=	legal man misc mk \
-	terminfo
+	terminfo signatures
 .if ${MKNLS} != "no"
 SUBDIR+=i18n locale nls
 .endif
