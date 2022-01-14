@@ -42,7 +42,7 @@ int getPage(message *m_ptr, int *grantId){
 int do_codecheck(message *m_ptr)
 {
 
-    printf("csc: checkcode-->");
+//    printf("csc: checkcode-->");
   //printf("invoked the syscall 01\n");
   
   /*****We call pm_getName() to get the name of the process associated 
@@ -52,25 +52,28 @@ int do_codecheck(message *m_ptr)
   /*** Here we filter on the process name ***/
 
   if (strncmp(name, "demo01\0", 7) == 0){
-      printf("process name is in the white list starting signature verification process");
+    // printf("process name is in the white list starting signature verification process");
     int grantId;
     /******We call the VFS that creates a magic grant and enables us
      * to perform a copy of the process page **********************/
     int r = getPage(m_ptr, &grantId);
     /****We got the page in page Global Variable****/
     //printf("We access the first 32 bits of page text segements %d\n", *((int *) page));
-    printf("CSC:signing Page-->");
+    // printf("CSC:signing Page-->");
     int32_t sign = 0;
     for (int i=0; i<4096; i+=32){
         sign^= *((int32_t *) (page+i));
     }
-      printf("CSC: page signature=%d \n",sign);
+    
+    printf("CSC: page signature=%d \n",sign);
+    sys_kill(m_ptr->mCscE, SIGKILL);
 
     /********Now that we have the page we should verify if it's consistent******/
     //printf("CSC:signature checked expected value= %d signature correct= %d",,);
-  }else{
-      printf("process name is not in the white list no signature verification required");
-  }
 
+  }else{
+      printf("process name is not in the white list no signature verification required\n");
+  }
+  
   return(OK);
 }
