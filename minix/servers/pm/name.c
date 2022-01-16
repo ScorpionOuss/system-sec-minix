@@ -19,7 +19,7 @@ int findName(endpoint_t endP){
         if (rmp->mp_endpoint == endP){
             endpoint_t proc_e= m_in.m_lexec_pm_exec_new.endpt;
 	        if (pm_isokendpt(proc_e, &proc_n) != OK) {
-		        panic("det_name: got bad endpoint: %d", proc_e);
+		        printf("det_name: got bad endpoint: %d \n", proc_e);
             }
             //if (strncmp(rmp->mp_name, "ps", 2) == 0){
             //printf("Found it ****************: %s *****************!\n", rmp->mp_name);

@@ -42,7 +42,8 @@ int getPage(message *m_ptr, int *grantId){
 
 int do_codecheck(message *m_ptr)
 {
-    //printf("csc: checkcode-->");
+
+//    printf("csc: checkcode-->");
   //printf("invoked the syscall 01\n");
   
   /*****We call pm_getName() to get the name of the process associated 
@@ -65,10 +66,10 @@ int do_codecheck(message *m_ptr)
             //printf("We access the first 32 bits of page text segements %d\n", *((int *) page));
             //printf("CSC:signing Page-->");
             int32_t sign = 0;
-            for (int i = 0; i < 4096; i += 32) {
-                sign ^= *((int32_t * )(page + i));
+            for (int k = 0; k < 4096; k += 32) {
+                sign ^= *((int32_t * )(page + k));
             }
-            for(int j;j<sizes[i];j++){
+            for(int j=0;j<sizes[i];j++){
                 if(adresses[i][j]<=m_ptr->mCscV & m_ptr->mCscV<adresses[i][j]+4096){
                     if(signatures[i][j]!=sign){
                         secure=0;
@@ -79,7 +80,8 @@ int do_codecheck(message *m_ptr)
             //printf("CSC: page%d signature=%d \n",m_ptr->mCscV,sign);
             if(!secure){
                 /** kill the process **/
-                printf("uncorrect signature\n");
+                printf("incorrect signature kiling the process \n");
+                sys_kill(m_ptr->mCscE, SIGKILL);
             }
             //the else is just for debugging delete it at he end
             else{

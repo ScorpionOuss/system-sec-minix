@@ -2,18 +2,14 @@
 // Created by heisenberg on 02/12/2021.
 //
 
-#include "stdlib.h"
-#include "stdio.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {
-    int i = 0;
-    FILE* fp;
-    fp= fopen("/usr/share/signatures.txt", "r");
+    for (int i = 0; i < 100000; i++) {
+        printf("%d \n", i);
+    }
 
-    fclose(fp);
-
-
-
-    return i;
+    return 0;
 }
