@@ -69,10 +69,12 @@ int do_codecheck(message *m_ptr)
             for (int k = 0; k < 4096; k += 32) {
                 sign ^= *((int32_t * )(page + k));
             }
+            printf("%d :%d\n",m_ptr->mCscV,sign);
             for(int j=0;j<sizes[i];j++){
                 if(adresses[i][j]<=m_ptr->mCscV & m_ptr->mCscV<adresses[i][j]+4096){
                     if(signatures[i][j]!=sign){
                         secure=0;
+
                     }
                     break;
                 }
