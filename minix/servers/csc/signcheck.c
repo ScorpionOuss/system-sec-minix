@@ -42,9 +42,6 @@ int getPage(message *m_ptr, int *grantId){
 
 int do_codecheck(message *m_ptr)
 {
-
-//    printf("csc: checkcode-->");
-  //printf("invoked the syscall 01\n");
   
   /*****We call pm_getName() to get the name of the process associated 
    *                       to the endpoint                      *****/
@@ -55,41 +52,38 @@ int do_codecheck(message *m_ptr)
     for(int i=0;i<n;i++) {
         //printf("%s:%s",name,white_list[i]);
         if (!strcmp(name, white_list[i])) {
-            //printf("here");
-            //secure=0;
-
             int grantId;
             /******We call the VFS that creates a magic grant and enables us
              * to perform a copy of the process page **********************/
             int r = getPage(m_ptr, &grantId);
-            /****We got the page in page Global Variable****/
-            //printf("We access the first 32 bits of page text segements %d\n", *((int *) page));
-            //printf("CSC:signing Page-->");
+
+            /**** We got the page in page Global Variable ****/
             int32_t sign = 0;
             for (int k = 0; k < 4096; k += 32) {
                 sign ^= *((int32_t * )(page + k));
             }
+        
             printf("%d :%d\n",m_ptr->mCscV,sign);
-            for(int j=0;j<sizes[i];j++){
-                if(adresses[i][j]<=m_ptr->mCscV & m_ptr->mCscV<adresses[i][j]+4096){
-                    if(signatures[i][j]!=sign){
+            
+            /**** Check if page that was hashed matches a page stored in signatures.h ****/
+            for(int j=0; j<sizes[i]; j++){
+                if(adresses[i][j] <= m_ptr->mCscV & m_ptr->mCscV < adresses[i][j]+4096){
+                    if(signatures[i][j] != sign){
                         secure=0;
-
                     }
                     break;
                 }
             }
-            //printf("CSC: page%d signature=%d \n",m_ptr->mCscV,sign);
+
             if(!secure){
                 /** kill the process **/
-                printf("incorrect signature kiling the process \n");
+                printf("Incorrect signature, killing the process \n");
                 sys_kill(m_ptr->mCscE, SIGKILL);
             }
             //the else is just for debugging delete it at he end
             else{
                 printf("correct signature\n");
             }
-            //printf("CSC:signature checked expected value= %d signature correct= %d",,);
         } else {
             //printf("process name is not in the white list no signature verification required");
         }

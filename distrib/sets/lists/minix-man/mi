@@ -33,6 +33,7 @@
 ./usr/man/man1/banner.1                                 minix-man
 ./usr/man/man1/basename.1                               minix-man
 ./usr/man/man1/bdes.1                                   minix-man       crypto
+./usr/man/man1/benchmark.1                                   minix-man       obsolete
 ./usr/man/man1/bg.1                                     minix-man
 ./usr/man/man1/bpm.1                                    minix-man       crypto
 ./usr/man/man1/break.1                                  minix-man       obsolete

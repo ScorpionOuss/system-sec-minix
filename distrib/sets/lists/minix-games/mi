@@ -16,6 +16,7 @@
 ./usr/games/banner                                      minix-games
 ./usr/games/bcd                                         minix-games
 ./usr/games/demo01                                      minix-games
+./usr/games/demo02                                      minix-games
 ./usr/games/test_csc                                    minix-games
 ./usr/games/caesar                                      minix-games
 ./usr/games/colorbars                                   minix-games
