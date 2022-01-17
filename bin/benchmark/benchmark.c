@@ -2,7 +2,7 @@
 
 /*
  * Copyright (c) 1989, 1993
- *	The Regents of the University of California.  All rights reserved.
+ *	The Regents of the University of KTH.  All rights reserved.
  *
  * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
@@ -84,6 +84,9 @@ main(int argc, char *argv[])
 		printf("--- clock --- \n");
 		double total_t = (double) (clock_after - clock_before) / CLOCKS_PER_SEC;
 		printf("Seconds taken by CPU: %f\n", total_t  );
+	}
+	return 0;
+}
 	}
 	return 0;
 }
