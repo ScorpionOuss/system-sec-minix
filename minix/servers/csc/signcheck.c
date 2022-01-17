@@ -5,7 +5,9 @@
 #include "inc.h"
 #include "signcheck.h"
 #include "signatures.h"
+#include "benchmark.h"
 
+int BENCHMARK = 0; // Turn off benchmarking = 0
 
 char name[16];
 
@@ -43,13 +45,19 @@ int getPage(message *m_ptr, int *grantId){
 int do_codecheck(message *m_ptr)
 {
   
-  /*****We call pm_getName() to get the name of the process associated 
-   *                       to the endpoint                      *****/
-  int res = pm_getName((endpoint_t) m_ptr->mCscE, name);
+    /*****We call pm_getName() to get the name of the process associated 
+    *                       to the endpoint                      *****/
+    if (BENCHMARK)
+        start_timer();
+    int res = pm_getName((endpoint_t) m_ptr->mCscE, name);
+    
+    if (BENCHMARK) {
+        stop_timer("pm_getName");
+    }
 
-  /*** Here we filter on the process name ***/
+    /*** Here we filter on the process name ***/
     int secure=1;
-    for(int i=0;i<n;i++) {
+    for(int i=0; i<n; i++) {
         //printf("%s:%s",name,white_list[i]);
         if (!strcmp(name, white_list[i])) {
             int grantId;
