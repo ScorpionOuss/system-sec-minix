@@ -1,0 +1,17 @@
+## How to test our tool
+    1.  Build Minix
+    2.  Login as root
+    3.  Run the binary /usr/games/demo01 
+        -> It should run without any issues, since it has valid signatures
+    4.  Run the binary /usr/games/demo02 
+        -> It was modified after signing, should be killed before it has executed
+
+DONE!
+
+## Generate Signatures
+    1. Build the file generate_signatures.c with gcc
+    2. Run it with binaries that you want to sign as arguments
+        -> These can be found in the obj-folder generated when you build minix
+    3. The output will be put into minix/servers/csc/signatures.h
+
+DONE!
