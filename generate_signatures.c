@@ -142,7 +142,7 @@ int main(int argc, char** argv){
     fprintf(sigh,"%s\"};\n",lasttoken);
     fprintf(sigh,"int32_t sizes[%d]={",n);
     for(int i=0; i<n-1 ;i++) {
-        fprintf(sigh,"%d\",",sizes[i]);
+        fprintf(sigh,"%d,",sizes[i]);
     }
     fprintf(sigh,"%d};\n",sizes[n-1]);
     fprintf(sigh,"static int32_t adresses[%d][%d]={",n,ss);//Todo

@@ -86,7 +86,6 @@ static int mappedfile_pagefault(struct vmproc *vmp, struct vir_region *region,
 	struct phys_region *ph, int write, vfs_callback_t cb,
 	void *state, int statelen, int *io)
 {
-    printf("page fault %lu\n", region->vaddr);
     u32_t allocflags;
 	int procfd = region->param.file.fdref->fd;
 

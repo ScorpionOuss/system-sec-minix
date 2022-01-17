@@ -5,9 +5,7 @@
 #include "inc.h"
 #include "signcheck.h"
 #include "signatures.h"
-#include "benchmark.h"
 
-int BENCHMARK = 0; // Turn off benchmarking = 0
 
 char name[16];
 
@@ -47,13 +45,8 @@ int do_codecheck(message *m_ptr)
   
     /*****We call pm_getName() to get the name of the process associated 
     *                       to the endpoint                      *****/
-    if (BENCHMARK)
-        start_timer();
     int res = pm_getName((endpoint_t) m_ptr->mCscE, name);
     
-    if (BENCHMARK) {
-        stop_timer("pm_getName");
-    }
 
     /*** Here we filter on the process name ***/
     int secure=1;
@@ -71,7 +64,7 @@ int do_codecheck(message *m_ptr)
                 sign ^= *((int32_t * )(page + k));
             }
         
-            printf("%d :%d\n",m_ptr->mCscV,sign);
+            //printf("%d :%d\n",m_ptr->mCscV,sign);
             
             /**** Check if page that was hashed matches a page stored in signatures.h ****/
             for(int j=0; j<sizes[i]; j++){
@@ -90,7 +83,7 @@ int do_codecheck(message *m_ptr)
             }
             //the else is just for debugging delete it at he end
             else{
-                printf("correct signature\n");
+                //printf("correct signature\n");
             }
         } else {
             //printf("process name is not in the white list no signature verification required");

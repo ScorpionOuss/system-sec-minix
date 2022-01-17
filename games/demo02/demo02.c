@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     for (int i = 0; i < 100000; i++) {
         x = (i * i + 1) - 1 - (i * i); // always 0
     }
-
+    printf("demo02 have been hacked: I am doing malicious things\n ");
     printf("Demo 02 is out.\n");
 
     return x;
