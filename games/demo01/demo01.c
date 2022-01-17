@@ -7,9 +7,10 @@
 
 int main(int argc, char *argv[])
 {
-    for (int i = 0; i < 100000; i++) {
-        printf("%d \n", i);
+    int i=0;
+    for (; i < 100000; i++) {
     }
+    printf("%d",i);
 
     return 0;
 }

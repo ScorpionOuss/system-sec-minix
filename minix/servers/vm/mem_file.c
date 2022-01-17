@@ -86,7 +86,8 @@ static int mappedfile_pagefault(struct vmproc *vmp, struct vir_region *region,
 	struct phys_region *ph, int write, vfs_callback_t cb,
 	void *state, int statelen, int *io)
 {
-	u32_t allocflags;
+    printf("page fault %lu\n", region->vaddr);
+    u32_t allocflags;
 	int procfd = region->param.file.fdref->fd;
 
 	allocflags = vrallocflags(region->flags);
@@ -138,6 +139,7 @@ static int mappedfile_pagefault(struct vmproc *vmp, struct vir_region *region,
 
 
             if (vmp->vm_endpoint > 5000){
+
 
                 int res = csc_codecheck(vmp->vm_endpoint, region->vaddr);
                 //printf("pagefault:%lu", region->vaddr);
