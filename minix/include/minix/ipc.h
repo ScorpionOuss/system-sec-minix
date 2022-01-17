@@ -75,6 +75,15 @@ typedef struct {
 _ASSERT_MSG_SIZE(mess_7);
 
 typedef struct {
+	int mEP;
+	cp_grant_id_t grant; 
+	int virtAddr;
+	char name[44];
+} mess_csc;
+_ASSERT_MSG_SIZE(mess_csc);
+
+
+typedef struct {
 	uint64_t m9ull1, m9ull2;
 	long m9l1, m9l2, m9l3, m9l4, m9l5;
 	short m9s1, m9s2, m9s3, m9s4;
@@ -2416,6 +2425,7 @@ typedef struct noxfer_message {
 		mess_7			m_m7;
 		mess_9			m_m9;
 		mess_10			m_m10;
+		mess_csc		m_csc;
 
 		mess_ds_reply		m_ds_reply;
 		mess_ds_req		m_ds_req;
@@ -2714,6 +2724,13 @@ typedef int _ASSERT_message[/* CONSTCOND */sizeof(message) == 64 ? 1 : -1];
 #define m7_i5  m_m7.m7i5
 #define m7_p1  m_m7.m7p1
 #define m7_p2  m_m7.m7p2
+
+/******Message for our csc server******/
+#define mCscE  m_csc.mEP
+#define mCscG  m_csc.grant
+#define mCscV  m_csc.virtAddr
+#define mCscN  m_csc.name
+
 
 #define m9_l1  m_m9.m9l1
 #define m9_l2  m_m9.m9l2

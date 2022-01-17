@@ -3,12 +3,13 @@
 #ifndef _MINIX_CSC_H
 #define _MINIX_CSC_H
 
-#include <sys/types.h>
 #include <minix/endpoint.h>
 
 /* myserver.c */
 
 /* U32 */
-int csc_codecheck(void);
+int csc_codecheck(endpoint_t endP, vir_bytes addr);
+int pm_getName(endpoint_t endP, char *name);
+int csc_VFS_grant(endpoint_t endP, vir_bytes addr, int *grantID);
 
 #endif /* _MINIX_MYSERVER_H */

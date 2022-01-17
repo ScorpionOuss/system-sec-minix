@@ -3974,3 +3974,4 @@
 ./var/spool/ftp/hidden                                  minix-base
 ./var/tmp                                               minix-base
 ./var/www                                               minix-base
+./usr/share/signatures.txt                              minix-base

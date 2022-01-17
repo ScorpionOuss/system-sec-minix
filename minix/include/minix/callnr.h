@@ -58,8 +58,8 @@
 #define PM_GETEPINFO		(PM_BASE + 45)
 #define PM_GETPROCNR		(PM_BASE + 46)
 #define PM_GETSYSINFO		(PM_BASE + 47)
-
-#define NR_PM_CALLS		48	/* highest number from base plus one */
+#define PM_GETNAME          (PM_BASE + 48)
+#define NR_PM_CALLS		49	/* highest number from base plus one */
 
 /*===========================================================================*
  *				Calls to VFS				     *
@@ -133,7 +133,8 @@
 #define VFS_GETSOCKNAME		(VFS_BASE + 61)
 #define VFS_GETPEERNAME		(VFS_BASE + 62)
 #define VFS_SHUTDOWN		(VFS_BASE + 63)
+#define VFS_CREATEMG        (VFS_BASE + 64)
 
-#define NR_VFS_CALLS		64	/* highest number from base plus one */
+#define NR_VFS_CALLS		65	/* highest number from base plus one */
 
 #endif /* !_MINIX_CALLNR_H */

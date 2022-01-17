@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[])
 {
-    printf("csc test starting");
+    printf("csc test starting\n");
 
 
     return 0;

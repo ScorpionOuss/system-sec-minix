@@ -10,6 +10,8 @@ CFLAGS+=	-fno-builtin
 .include "arch/${MACHINE_ARCH}/Makefile.inc"
 
 SRCS+=  \
+	grantFromVFS.c\
+	getName.c\
 	alloc_util.c \
 	assert.c \
 	asynsend.c \
