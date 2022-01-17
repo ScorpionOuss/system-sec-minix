@@ -301,7 +301,6 @@
 ./service/vfs                                           minix-base
 ./service/vm                                            minix-base
 ./service/vnd                                           minix-base
-./service/bms                                           minix-base
 ./sys                                                   minix-base
 ./tmp                                                   minix-base
 ./usr                                                   minix-base
