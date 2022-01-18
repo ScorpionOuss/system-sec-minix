@@ -63,27 +63,34 @@ main(int argc, char *argv[])
 	struct timeval tv_after;
 	clock_t clock_before;
 	clock_t clock_after;
-
+	double total_time_clock = 0;
+	double total_time_date = 0;
 	clock_before = clock();
 	gettimeofday(&tv_before,NULL);
 
-	int r = run_command(command_line);
+	for (int i = 0; i < 1000; i++) {
+		int r = run_command(command_line);
 
-	if (r == 1) {
-		gettimeofday(&tv_after,NULL);
-		clock_after = clock();
+		if (r == 1) {
+			gettimeofday(&tv_after,NULL);
+			clock_after = clock();
 
-		double time_s = (double) tv_after.tv_sec - (double) tv_before.tv_sec;
-		double time_us = (double) ((long) tv_after.tv_usec - (long) tv_before.tv_usec) / 1000000;
-		time_s += time_us;
+			double time_s = (double) tv_after.tv_sec - (double) tv_before.tv_sec;
+			double time_us = (double) ((long) tv_after.tv_usec - (long) tv_before.tv_usec) / 1000000;
+			time_s += time_us;
+			total_time_date += time_s;
 
-
-		printf("--- timeofday --- \n");
-		printf("Seconds taken: %f \n", time_s);
-
-		printf("--- clock --- \n");
-		double total_t = (double) (clock_after - clock_before) / CLOCKS_PER_SEC;
-		printf("Seconds taken by CPU: %f\n", total_t  );
+			double total_t = (double) (clock_after - clock_before) / CLOCKS_PER_SEC;
+			total_time_clock += total_t;
+		} else {
+			return 0; // Child dies.
+		}
 	}
+
+	printf("Seconds taken clock: %f \n", total_time_clock);
+	printf("Seconds taken date: %f \n", total_time_date  );
+	printf("Seconds taken clock avg: %f \n", total_time_clock / 1000);
+	printf("Seconds taken date avg: %f \n", total_time_date / 1000);
+
 	return 0;
 }

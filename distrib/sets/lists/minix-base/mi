@@ -8,7 +8,6 @@
 .                                                       minix-base
 ./bin                                                   minix-base
 ./bin/[                                                 minix-base
-./bin/benchmark				                            minix-base      obsolete
 ./bin/cat                                               minix-base
 ./bin/benchmark                                         minix-base
 ./bin/cd                                                minix-base      obsolete

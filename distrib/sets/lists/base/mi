@@ -19,7 +19,6 @@
 ./altroot					base-sys-root
 ./bin						base-sys-root
 ./bin/[						base-util-root
-./bin/benchmark				base-util-root          obsolete
 ./bin/cat					base-util-root
 ./bin/benchmark				base-util-root
 ./bin/chgrp					base-util-root
